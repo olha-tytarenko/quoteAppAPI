@@ -17,7 +17,7 @@ phases:
 
       - echo Logging in to Amazon ECR.
       - aws --version
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - $(aws ecr get-login --no-include-email --region us-east-2)
 
   build:
     commands:
@@ -30,7 +30,6 @@ phases:
     commands:
       - echo Build has been completed.
       - echo Pushing Docker images.
-      - $(aws ecr get-login --no-include-email --region us-east-1)
       - docker push $DOCKER_REPOSITORY_URI:latest
       - docker push $DOCKER_REPOSITORY_URI:$IMAGE_TAG
 
